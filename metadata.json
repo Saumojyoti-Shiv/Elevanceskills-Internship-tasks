@@ -1,0 +1,8 @@
+{
+  "name": "AI Knowledge Assistant",
+  "description": "An intelligent multi-feature AI Knowledge Assistant with Dynamic Knowledge Base Expansion (Web, RSS, File ingestion & semantic search) and Multi-Modal Image Analysis powered by Google Gemini.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

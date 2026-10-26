@@ -1,147 +1,52 @@
-# 🧠 AI Knowledge Assistant — Elevanceskills Internship
+# Knowledge Assistant — Elevanceskills Internship
 
-![Status](https://img.shields.io/badge/Status-Active-brightgreen)
-![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
-![Streamlit](https://img.shields.io/badge/UI-Streamlit-FF4B4B)
-![ChromaDB](https://img.shields.io/badge/VectorStore-ChromaDB-orange)
-![License](https://img.shields.io/badge/License-MIT-green)
+This repository contains the implementation for all six tasks of the Elevanceskills Internship project. It is built as a unified web application using Node.js, Express, React, and TypeScript, with all retrieval, computer vision, and natural language processing running locally without external API keys.
 
-An intelligent, multi-feature AI chatbot built as part of the **Elevanceskills Internship Program**. This project implements 6 progressive tasks — from dynamic knowledge bases to multilingual support — all integrated into a single cohesive application.
+## Project Modules
 
-> 📄 **See also**: [Roadmap & Analysis](./Roadmap%20%26%20Analysis.md) | [AI Activity Log](./AI%20Activity%20Log.md)
+### Task 1: Dynamic Knowledge Base Expansion
+- Ingests content from web pages, RSS feeds, workspace files, and user-uploaded documents.
+- Splits documents into overlapping chunks with SHA-256 hash deduplication.
+- Uses an n-gram TF-IDF vector index with cosine similarity for retrieval-augmented responses and source citations.
 
----
+### Task 2: Multi-Modal Assistant (Text + Image)
+- Processes uploaded images (`JPG`, `PNG`, `WEBP`) using `sharp` pixel buffer inspection, HSL color quantization, and Sobel edge gradient detection.
+- Extracts resolution, lighting conditions, dominant color palettes, edge density, and spatial focal composition.
+- Retains visual observations in conversation history to answer follow-up questions across turns.
 
-## 🌟 Features
+### Task 3: Medical Q&A Chatbot (MedQuAD)
+- Retrieves clinical question-answer pairs from the NIH MedQuAD corpus (`NIDDK`, `NCI`, `NHLBI`, `NINDS`, `GARD`, `MedlinePlus`).
+- Includes an option to sync live XML entries directly from the `abachaa/MedQuAD` GitHub repository.
+- Performs clinical named entity recognition (NER) to highlight diseases, symptoms, treatments, and medications.
 
-### ✅ Task 1 — Dynamic Knowledge Base Expansion
-- Ingest content from **web pages, RSS feeds, and local files**
-- **Automatic periodic updates** using APScheduler
-- Vector-based semantic search with **ChromaDB**
-- Source management (add/remove/toggle sources from UI)
-- Deduplication via content hashing
-- Source citations in chatbot responses
+### Task 4: Domain Expert Chatbot (arXiv Computer Science)
+- Indexes Computer Science papers (`cs.AI`, `cs.CL`, `cs.LG`, `cs.CV`, `cs.IR`) with support for querying the Cornell arXiv API.
+- Provides paper search, category/year filtering, abstract summarization, simplified concept explanations, and citation-backed Q&A.
+- Includes category distribution, publication timeline, and concept frequency charts.
 
-### ✅ Task 2 — Multi-Modal AI Assistant (Text + Image)
-- Upload images (JPG, PNG, WEBP) for AI-powered analysis
-- **Evidence-based responses** with confidence indicators
-- Structured image analysis: caption, objects, scene, text, colors
-- **Contextual reasoning** across multiple turns
-- Mixed text+image conversations with history
-- Expandable "What I See" section showing model's observations
-### 🔲 Task 3 — Medical Q&A Chatbot (MedQuAD)
-### 🔲 Task 4 — Domain Expert Chatbot (arXiv Papers)
-### 🔲 Task 5 — Sentiment-Aware Chatbot
-### 🔲 Task 6 — Multilingual Conversational Support
+### Task 5: Sentiment-Aware Chatbot
+- Evaluates user messages using a lexicon and valence-based sentiment analyzer (`positive`, `negative`, `neutral`) with polarity scoring (`-1.0` to `+1.0`).
+- Detects fine-grained emotions (`joy`, `gratitude`, `curiosity`, `frustration`, `anger`, `sadness`, `anxiety`) and adjusts response tone accordingly.
+- Tracks polarity across conversation turns and flags consecutive negative sentiment.
 
----
+### Task 6: Multilingual Conversational Support
+- Supports English, Hindi, Spanish, French, German, and Bengali.
+- Identifies input language using Unicode script ranges and lexical markers, including mixed-language (code-switched) inputs.
+- Maintains a canonical English context representation to preserve conversation continuity when switching languages mid-session.
 
-## 🛠️ Tech Stack
+## Getting Started
 
-| Category | Technology |
-|---|---|
-| **UI** | Streamlit |
-| **Vector Store** | ChromaDB |
-| **Embeddings** | sentence-transformers (`all-MiniLM-L6-v2`) — runs locally |
-| **LLM** | Google Gemini API (`gemini-3.8-flash`) — free tier |
-| **Scraping** | BeautifulSoup4, requests, feedparser |
-| **Scheduling** | APScheduler |
-| **Language** | Python 3.10+ |
-
----
-
-## 🚀 Setup Instructions
-
-### 1. Clone the Repository
+1. Install dependencies:
 ```bash
-git clone https://github.com/Saumojyoti-Shiv/Elevanceskills-Internship-tasks.git
-cd Elevanceskills-Internship-tasks
+npm install
 ```
 
-### 2. Create a Virtual Environment
+2. Start the development server (runs on `http://localhost:3000`):
 ```bash
-python -m venv venv
-
-# Windows
-venv\Scripts\activate
-
-# Linux/Mac
-source venv/bin/activate
+npm run dev
 ```
 
-### 3. Install Dependencies
+3. Build for production:
 ```bash
-pip install -r requirements.txt
+npm run build
 ```
-
-### 4. Set Up Gemini API Key (Free)
-
-1. Go to [Google AI Studio](https://aistudio.google.com/apikey) and create a free API key
-2. Create a `.env` file in the project root:
-```bash
-GEMINI_API_KEY=your_api_key_here
-```
-
-### 5. Run the Application
-```bash
-streamlit run app.py
-```
-
-> 💡 **Note**: On first run, the embedding model (~90MB) will download automatically. The LLM runs via Google's Gemini API (free tier) — no GPU required, responses in seconds.
-
----
-
-## 📁 Project Structure
-
-```
-Elevanceskills-Internship-tasks/
-├── app.py                          # Main Streamlit application
-├── config.py                       # Centralized configuration
-├── requirements.txt                # Python dependencies
-├── README.md                       # This file
-├── Roadmap & Analysis.md           # Full technical roadmap
-├── AI Activity Log.md              # AI action history with reasoning
-├── Internship tasks.md             # Original task descriptions
-├── core/                           # Core modules (shared across all tasks)
-│   ├── __init__.py
-│   ├── embeddings.py               # Embedding model wrapper
-│   ├── vector_store.py             # ChromaDB interface
-│   └── chatbot.py                  # LLM-based chatbot logic
-├── tasks/                          # Task-specific implementations
-│   └── task1_dynamic_kb/
-│       ├── __init__.py
-│       ├── sources.py              # Source management (dataclass + JSON persistence)
-│       └── updater.py              # Web/RSS/file scraping & KB updates
-├── data/                           # Datasets (gitignored for large files)
-├── tests/                          # Unit tests
-└── assets/                         # Screenshots, diagrams
-```
-
----
-
-## 📸 Screenshots
-
-*(Screenshots will be added once the UI is running)*
-
----
-
-## 📊 Google Drive (Datasets)
-
-> _Datasets link will be added here after all tasks are completed._
-
----
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome!
-Check the [issues page](https://github.com/Saumojyoti-Shiv/Elevanceskills-Internship-tasks/issues).
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
----
-
-**Built with ❤️ for the Elevanceskills Internship Program**
