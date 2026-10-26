@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+eggs/
+*.egg
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# ChromaDB persistent storage
+chroma_db/
+
+# Data files (too large for GitHub)
+data/
+*.csv
+*.json
+!sources.json
+*.xml
+*.jsonl
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Models (downloaded at runtime)
+models/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Environment variables (API keys)
+.env

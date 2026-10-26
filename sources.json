@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Python Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Python_(programming_language)",
+        "source_type": "web",
+        "last_updated": null,
+        "is_active": true
+    },
+    {
+        "name": "Hacker News RSS",
+        "url": "https://news.ycombinator.com/rss",
+        "source_type": "rss",
+        "last_updated": null,
+        "is_active": true
+    }
+]
