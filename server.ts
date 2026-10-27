@@ -118,13 +118,34 @@ function cosineSimilarity(vecA: Map<string, number>, vecB: Map<string, number>):
   return dot;
 }
 
-// In-memory stores for KB, MedQuAD, and arXiv
+// In-memory stores for KB, MedQuAD, and arXiv (initialized from /Dataset)
 const vectorStore = new Map<string, VectorDocument>();
 const updateLogs: UpdateLogEntry[] = [];
 let lastUpdateTime: string | null = null;
 
-const medquadStore: MedQuADPair[] = [...INITIAL_MEDQUAD_DATA];
-const arxivStore: ArxivPaper[] = [...INITIAL_ARXIV_PAPERS];
+function loadJsonDataset<T>(relativePath: string, fallback: T[]): T[] {
+  try {
+    const fullPath = path.resolve(process.cwd(), relativePath);
+    if (fs.existsSync(fullPath)) {
+      const parsed = JSON.parse(fs.readFileSync(fullPath, 'utf-8'));
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed;
+      }
+    }
+  } catch (err) {
+    console.warn(`Could not read ${relativePath}, using fallback dataset:`, err);
+  }
+  return [...fallback];
+}
+
+const medquadStore: MedQuADPair[] = loadJsonDataset(
+  'Dataset/task3_medquad_qa.json',
+  INITIAL_MEDQUAD_DATA
+);
+const arxivStore: ArxivPaper[] = loadJsonDataset(
+  'Dataset/task4_arxiv_cs_papers.json',
+  INITIAL_ARXIV_PAPERS
+);
 
 function loadSources(): Source[] {
   try {

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "KB-WEB-001",
+    "source_name": "Python Wikipedia",
+    "source_type": "web",
+    "url": "https://en.wikipedia.org/wiki/Python_(programming_language)",
+    "content": "Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation. Python is dynamically type-checked and garbage-collected. It supports multiple programming paradigms, including structured (particularly procedural), object-oriented and functional programming. Guido van Rossum began working on Python in the late 1980s as a successor to the ABC programming language, and first released it in 1991 as Python 0.9.0. Python 2.0 was released in 2000 and introduced list comprehensions, cycle-detecting garbage collection, reference counting, and Unicode support. Python 3.0, released in 2008, was a major revision not completely backward-compatible with earlier versions."
+  },
+  {
+    "id": "KB-RSS-001",
+    "source_name": "Hacker News RSS",
+    "source_type": "rss",
+    "url": "https://news.ycombinator.com/rss",
+    "content": "Hacker News is a social news website focusing on computer science, software engineering, artificial intelligence, and entrepreneurship. It is run by the investment fund and startup incubator Y Combinator. Recent discussions highlight advances in local multimodal AI models, retrieval-augmented generation (RAG) pipelines, vector databases, edge inference, and open-source developer tools."
+  },
+  {
+    "id": "KB-FILE-001",
+    "source_name": "Project README (Local File)",
+    "source_type": "file",
+    "url": "README.md",
+    "content": "The Elevanceskills Internship project implements six integrated modules: Task 1 Dynamic Knowledge Base Expansion with SHA-256 deduplication and n-gram TF-IDF vector search; Task 2 Multi-Modal Assistant combining text and image analysis using Sharp pixel statistics, HSL color histograms, and Sobel edge detection; Task 3 Medical Q&A Chatbot built on the NIH MedQuAD dataset with clinical named entity recognition; Task 4 Domain Expert Chatbot trained on the arXiv Computer Science subset; Task 5 Sentiment-Aware Chatbot with emotion valence classification; and Task 6 Multilingual Conversational Support across English, Hindi, Spanish, French, German, and Bengali."
+  }
+]

@@ -1,0 +1,105 @@
+{
+  "emotion_lexicon": {
+    "joy": [
+      "happy",
+      "excited",
+      "awesome",
+      "great",
+      "wonderful",
+      "fantastic",
+      "amazing",
+      "thrilled",
+      "glad",
+      "delighted",
+      "love"
+    ],
+    "gratitude": [
+      "thank",
+      "thanks",
+      "grateful",
+      "appreciate",
+      "helpful",
+      "lifesaver",
+      "perfect",
+      "worked"
+    ],
+    "frustration": [
+      "frustrat",
+      "annoy",
+      "crash",
+      "crashing",
+      "stuck",
+      "broken",
+      "again",
+      "times",
+      "fail",
+      "failing",
+      "bug",
+      "slow",
+      "useless"
+    ],
+    "anger": [
+      "angry",
+      "furious",
+      "hate",
+      "terrible",
+      "worst",
+      "horrible",
+      "ridiculous",
+      "unacceptable"
+    ],
+    "sadness": [
+      "sad",
+      "disappoint",
+      "unhappy",
+      "upset",
+      "depressed",
+      "sorry",
+      "hard",
+      "difficult",
+      "struggling"
+    ],
+    "anxiety": [
+      "worried",
+      "worry",
+      "overwhelmed",
+      "stress",
+      "stressed",
+      "nervous",
+      "anxious",
+      "deadline",
+      "afraid",
+      "panic"
+    ]
+  },
+  "evaluation_samples": [
+    {
+      "id": "SENT-001",
+      "utterance": "I have tried resetting my configuration three times and the system keeps crashing! This is extremely frustrating!",
+      "expected_sentiment": "negative",
+      "expected_emotion": "frustration",
+      "adaptive_strategy": "Empathetic De-escalation & Action-Oriented"
+    },
+    {
+      "id": "SENT-002",
+      "utterance": "I am feeling really overwhelmed with my internship deadline and worried I will not finish in time.",
+      "expected_sentiment": "negative",
+      "expected_emotion": "anxiety",
+      "adaptive_strategy": "Compassionate & Reassuring"
+    },
+    {
+      "id": "SENT-003",
+      "utterance": "The new knowledge base pipeline worked on the first try! Thank you so much, this is awesome!",
+      "expected_sentiment": "positive",
+      "expected_emotion": "joy",
+      "adaptive_strategy": "Enthusiastic & Reinforcing"
+    },
+    {
+      "id": "SENT-004",
+      "utterance": "What are the standard evaluation metrics for classification models?",
+      "expected_sentiment": "neutral",
+      "expected_emotion": "curiosity",
+      "adaptive_strategy": "Clear, Balanced & Professional"
+    }
+  ]
+}

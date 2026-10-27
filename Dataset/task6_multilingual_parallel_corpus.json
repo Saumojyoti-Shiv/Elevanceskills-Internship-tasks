@@ -1,0 +1,81 @@
+{
+  "supported_languages": [
+    { "code": "en", "name": "English", "script": "Latin" },
+    { "code": "hi", "name": "Hindi", "script": "Devanagari" },
+    { "code": "es", "name": "Spanish", "script": "Latin" },
+    { "code": "fr", "name": "French", "script": "Latin" },
+    { "code": "de", "name": "German", "script": "Latin" },
+    { "code": "bn", "name": "Bengali", "script": "Bengali" }
+  ],
+  "cross_lingual_entity_glossary": [
+    {
+      "concept": "Diabetes",
+      "en": "Diabetes Mellitus",
+      "hi": "मधुमेह (Madhumeha)",
+      "es": "Diabetes",
+      "fr": "Diabète"
+    },
+    {
+      "concept": "Treatment & Medication",
+      "en": "Treatment / Metformin",
+      "hi": "उपचार / मेटफॉर्मिन",
+      "es": "Tratamiento / Metformina",
+      "fr": "Traitement / Metformine"
+    },
+    {
+      "concept": "Machine Learning",
+      "en": "Machine Learning",
+      "hi": "मशीन लर्निंग (Machine Learning)",
+      "es": "Aprendizaje Automático",
+      "fr": "Apprentissage Automatique"
+    },
+    {
+      "concept": "Overfitting",
+      "en": "Overfitting",
+      "hi": "ओवरफिटिंग (अति-अनुकूलन)",
+      "es": "Sobreajuste",
+      "fr": "Surapprentissage"
+    },
+    {
+      "concept": "Transformer Architecture",
+      "en": "Self-Attention Transformer",
+      "hi": "ट्रांसफॉर्मर नेटवर्क (स्व-ध्यान)",
+      "es": "Red Transformer (Autoatención)",
+      "fr": "Réseau Transformer (Auto-attention)"
+    }
+  ],
+  "parallel_dialogue_turns": [
+    {
+      "id": "MULTI-001",
+      "language_code": "hi",
+      "language_name": "Hindi",
+      "is_code_mixed": false,
+      "query": "मधुमेह (Diabetes) के मुख्य लक्षण और उपचार क्या हैं?",
+      "canonical_english": "What are the main symptoms and treatments of Diabetes (Madhumeha)?"
+    },
+    {
+      "id": "MULTI-002",
+      "language_code": "es",
+      "language_name": "Spanish",
+      "is_code_mixed": false,
+      "query": "¿Y qué medicamentos como la metformina se usan para tratarla?",
+      "canonical_english": "And what medications like metformin are used to treat diabetes?"
+    },
+    {
+      "id": "MULTI-003",
+      "language_code": "fr",
+      "language_name": "French",
+      "is_code_mixed": false,
+      "query": "Pouvez-vous résumer comment fonctionnent les réseaux Transformers en IA ?",
+      "canonical_english": "Can you summarize how Transformer networks work in AI?"
+    },
+    {
+      "id": "MULTI-004",
+      "language_code": "hi",
+      "language_name": "Hindi (Code-Mixed Hinglish)",
+      "is_code_mixed": true,
+      "query": "Can you explain कि machine learning में overfitting को कैसे prevent करते हैं?",
+      "canonical_english": "Can you explain how to prevent overfitting in machine learning?"
+    }
+  ]
+}
