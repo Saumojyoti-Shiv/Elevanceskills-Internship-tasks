@@ -139,11 +139,11 @@ function loadJsonDataset<T>(relativePath: string, fallback: T[]): T[] {
 }
 
 const medquadStore: MedQuADPair[] = loadJsonDataset(
-  'Dataset/task3_medquad_qa.json',
+  'Dataset/medquad_qa.json',
   INITIAL_MEDQUAD_DATA
 );
 const arxivStore: ArxivPaper[] = loadJsonDataset(
-  'Dataset/task4_arxiv_cs_papers.json',
+  'Dataset/arxiv_cs_papers.json',
   INITIAL_ARXIV_PAPERS
 );
 
@@ -274,10 +274,9 @@ function seedInitialKnowledge() {
     );
   }
 
-  // Also ingest local files (`README.md` and `Internship tasks.md`) on startup
+  // Ingest local README.md on startup
   const localFilesToSeed = [
     { name: 'Project README (Local File)', filePath: 'README.md' },
-    { name: 'Internship Tasks Spec (Local File)', filePath: 'Internship tasks.md' },
   ];
 
   for (const lf of localFilesToSeed) {
@@ -494,7 +493,7 @@ async function startServer() {
   const app = express();
   app.use(express.json({ limit: '25mb' }));
 
-  // Task 1: Dynamic Knowledge Base
+  // Feature 1: Dynamic Knowledge Base
   app.get('/api/state', (_req, res) => {
     res.json({
       sources,
@@ -635,7 +634,7 @@ async function startServer() {
     }
   });
 
-  // Task 1 Chat — 100% Local RAG Synthesis over Internet + Local File Chunks
+  // Feature 1 Chat — RAG Synthesis over Internet + Local File Chunks
   app.post('/api/chat/kb', (req, res) => {
     const { message } = req.body || {};
     if (!message || typeof message !== 'string') {
@@ -654,7 +653,7 @@ async function startServer() {
     res.json(result);
   });
 
-  // Task 2: Multi-Modal Image + Text Analysis
+  // Feature 2: Multi-Modal Image + Text Analysis
   app.post('/api/chat/multimodal', async (req, res) => {
     const { text = '', image_base64 = null, image_filename = '', history = [] } = req.body || {};
 
@@ -677,7 +676,7 @@ async function startServer() {
     res.json(result);
   });
 
-  // Task 3: MedQuAD Medical Q&A
+  // Feature 3: MedQuAD Medical Q&A
   app.get('/api/medquad/state', (_req, res) => {
     const categories = Array.from(new Set(medquadStore.map((m) => m.category)));
     res.json({
@@ -760,7 +759,7 @@ async function startServer() {
     res.json(result);
   });
 
-  // Task 4: arXiv Domain Expert
+  // Feature 4: arXiv Domain Expert
   app.get('/api/arxiv/papers', (req, res) => {
     const query = String(req.query.q || '');
     const category = String(req.query.category || 'All');
@@ -894,7 +893,7 @@ async function startServer() {
     res.json(result);
   });
 
-  // Task 5: Sentiment Analysis
+  // Feature 5: Sentiment Analysis
   app.post('/api/chat/sentiment', (req, res) => {
     const { message } = req.body || {};
     if (!message || typeof message !== 'string') {
@@ -906,7 +905,7 @@ async function startServer() {
     res.json(result);
   });
 
-  // Task 6: Multilingual Support
+  // Feature 6: Multilingual Support
   app.post('/api/chat/multilingual', (req, res) => {
     const { message, targetLanguage = 'auto', history = [] } = req.body || {};
     if (!message || typeof message !== 'string') {

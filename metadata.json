@@ -1,6 +1,6 @@
 {
   "name": "AI Knowledge Assistant",
-  "description": "An intelligent multi-feature AI Knowledge Assistant with Dynamic Knowledge Base Expansion (Web, RSS, File ingestion & semantic search) and Multi-Modal Image Analysis powered by Google Gemini.",
+  "description": "Multi-feature NLP and Computer Vision platform featuring dynamic knowledge base ingestion, image analysis, MedQuAD medical retrieval, arXiv research search, sentiment analysis, and multilingual chat.",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"

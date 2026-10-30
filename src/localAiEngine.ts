@@ -75,7 +75,7 @@ function classifyColorName(r: number, g: number, b: number): { name: string; hex
   return { name: 'Magenta Pink', hex };
 }
 
-// ── TASK 2: Local Computer Vision Image Analyzer (sharp pixel & Sobel engine) ──
+// Feature 2: Computer Vision Image Analyzer
 export async function analyzeImageLocally(
   imageBuffer: Buffer,
   filename: string
@@ -428,7 +428,7 @@ export function answerImageQuestionLocally(
   };
 }
 
-// ── TASK 1: Local RAG Knowledge Base Synthesizer (Internet + Local Files) ────
+// Feature 1: RAG Knowledge Base Synthesizer
 export function synthesizeLocalKBResponse(
   query: string,
   retrievedChunks: Array<{ text: string; source: string; url: string; score: number }>,
@@ -549,7 +549,7 @@ export function synthesizeLocalKBResponse(
   };
 }
 
-// ── TASK 3: Local MedQuAD Clinical QA & Medical NER Engine ───────────────────
+// Feature 3: MedQuAD Clinical QA & Medical NER
 export function extractLocalMedicalEntities(text: string) {
   const lower = text.toLowerCase();
   const diseases = MEDICAL_ENTITY_LEXICON.diseases.filter((d) => lower.includes(d));
@@ -609,7 +609,7 @@ export function generateLocalMedicalResponse(
   };
 }
 
-// ── TASK 4: Local arXiv Domain Expert & Paper Summarizer ─────────────────────
+// Feature 4: arXiv Domain Expert & Paper Summarizer
 export function summarizeArxivLocally(
   paper: ArxivPaper,
   mode: 'summary' | 'explain_simply'
@@ -694,7 +694,7 @@ export function generateLocalArxivResponse(
   };
 }
 
-// ── TASK 5: Local Sentiment & Fine-Grained Emotion Analyzer ──────────────────
+// Feature 5: Sentiment & Emotion Analyzer
 export function analyzeSentimentLocally(text: string) {
   const lower = text.toLowerCase();
 
@@ -812,7 +812,7 @@ export function analyzeSentimentLocally(text: string) {
   };
 }
 
-// ── TASK 6: Local Multilingual Detection & Cross-Lingual Engine ──────────────
+// Feature 6: Multilingual Detection & Cross-Lingual Engine
 export function processMultilingualLocally(
   message: string,
   targetLanguage: string,

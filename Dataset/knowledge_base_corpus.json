@@ -18,6 +18,6 @@
     "source_name": "Project README (Local File)",
     "source_type": "file",
     "url": "README.md",
-    "content": "The Elevanceskills Internship project implements six integrated modules: Task 1 Dynamic Knowledge Base Expansion with SHA-256 deduplication and n-gram TF-IDF vector search; Task 2 Multi-Modal Assistant combining text and image analysis using Sharp pixel statistics, HSL color histograms, and Sobel edge detection; Task 3 Medical Q&A Chatbot built on the NIH MedQuAD dataset with clinical named entity recognition; Task 4 Domain Expert Chatbot trained on the arXiv Computer Science subset; Task 5 Sentiment-Aware Chatbot with emotion valence classification; and Task 6 Multilingual Conversational Support across English, Hindi, Spanish, French, German, and Bengali."
+    "content": "The Knowledge Assistant platform implements six integrated features: Feature 1 Dynamic Knowledge Base Expansion with SHA-256 deduplication and n-gram vector search; Feature 2 Multi-Modal Assistant combining text and image analysis using Sharp pixel statistics, HSL color histograms, and Sobel edge detection; Feature 3 Medical Q&A Assistant built on the NIH MedQuAD dataset with clinical named entity recognition; Feature 4 Domain Expert Assistant trained on the arXiv Computer Science subset; Feature 5 Sentiment-Aware Assistant with emotion valence classification; and Feature 6 Multilingual Conversational Support across English, Hindi, Spanish, French, German, and Bengali."
   }
 ]

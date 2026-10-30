@@ -274,7 +274,7 @@ function Expander({
 export default function App() {
   const [activeTask, setActiveTask] = useState<TaskId>('task1');
 
-  // ── Task 1 State (Dynamic KB — Internet + Local Files) ─────────────────────
+  // ── Feature 1 State (Dynamic KB — Internet + Local Files) ──────────────────
   const [sources, setSources] = useState<Source[]>([]);
   const [totalDocuments, setTotalDocuments] = useState<number>(0);
   const [updateLogs, setUpdateLogs] = useState<UpdateLogEntry[]>([]);
@@ -291,7 +291,7 @@ export default function App() {
   const [isKbGenerating, setIsKbGenerating] = useState(false);
   const kbFileUploadRef = useRef<HTMLInputElement | null>(null);
 
-  // ── Task 2 State (Multi-Modal Local Vision + Text) ─────────────────────────
+  // ── Feature 2 State (Multi-Modal Local Vision + Text) ──────────────────────
   const [task2Messages, setTask2Messages] = useState<Task2Message[]>([]);
   const [task2Input, setTask2Input] = useState('');
   const [isTask2Generating, setIsTask2Generating] = useState(false);
@@ -300,7 +300,7 @@ export default function App() {
   const [currentImageName, setCurrentImageName] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  // ── Task 3 State (Medical Q&A - MedQuAD) ───────────────────────────────────
+  // ── Feature 3 State (Medical Q&A - MedQuAD) ────────────────────────────────
   const [medCategories, setMedCategories] = useState<string[]>(['All']);
   const [selectedMedCategory, setSelectedMedCategory] = useState<string>('All');
   const [totalMedPairs, setTotalMedPairs] = useState<number>(12);
@@ -310,7 +310,7 @@ export default function App() {
   const [task3Input, setTask3Input] = useState('');
   const [isTask3Generating, setIsTask3Generating] = useState(false);
 
-  // ── Task 4 State (arXiv Domain Expert) ─────────────────────────────────────
+  // ── Feature 4 State (arXiv Domain Expert) ──────────────────────────────────
   const [arxivSubTab, setArxivSubTab] = useState<'chat' | 'search' | 'viz'>('chat');
   const [arxivPapers, setArxivPapers] = useState<ArxivPaper[]>([]);
   const [arxivTotalIndexed, setArxivTotalIndexed] = useState<number>(10);
@@ -329,12 +329,12 @@ export default function App() {
   const [task4Input, setTask4Input] = useState<string>('');
   const [isTask4Generating, setIsTask4Generating] = useState<boolean>(false);
 
-  // ── Task 5 State (Sentiment-Aware Chatbot) ─────────────────────────────────
+  // ── Feature 5 State (Sentiment-Aware Chatbot) ──────────────────────────────
   const [task5Messages, setTask5Messages] = useState<Task5Message[]>([]);
   const [task5Input, setTask5Input] = useState<string>('');
   const [isTask5Generating, setIsTask5Generating] = useState<boolean>(false);
 
-  // ── Task 6 State (Multilingual Support) ────────────────────────────────────
+  // ── Feature 6 State (Multilingual Support) ─────────────────────────────────
   const [targetLanguage, setTargetLanguage] = useState<string>('auto');
   const [showCanonicalEnglish, setShowCanonicalEnglish] = useState<boolean>(true);
   const [task6Messages, setTask6Messages] = useState<Task6Message[]>([]);
@@ -385,7 +385,7 @@ export default function App() {
       .catch((err) => console.error('Failed to load arXiv papers:', err));
   };
 
-  // ── Task 1 Handlers ────────────────────────────────────────────────────────
+  // ── Feature 1 Handlers ─────────────────────────────────────────────────────
   const handleAddSource = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newSourceName.trim() || !newSourceUrl.trim()) {
@@ -534,7 +534,7 @@ export default function App() {
     await sendKbQuery(kbInput);
   };
 
-  // ── Task 2 Handlers ────────────────────────────────────────────────────────
+  // ── Feature 2 Handlers ─────────────────────────────────────────────────────
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -618,7 +618,7 @@ export default function App() {
     }
   };
 
-  // ── Task 3 Handlers (MedQuAD Medical Q&A) ──────────────────────────────────
+  // ── Feature 3 Handlers (MedQuAD Medical Q&A) ───────────────────────────────
   const handleSyncMedGithub = async () => {
     setIsSyncingMedGithub(true);
     setMedSyncNotice(null);
@@ -679,7 +679,7 @@ export default function App() {
     }
   };
 
-  // ── Task 4 Handlers (arXiv CS Domain Expert) ───────────────────────────────
+  // ── Feature 4 Handlers (arXiv CS Domain Expert) ────────────────────────────
   const handleArxivFilterApply = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     loadArxivPapers(arxivSearchQuery, arxivCategory, arxivMinYear);
@@ -772,7 +772,7 @@ export default function App() {
     }
   };
 
-  // ── Task 5 Handlers (Sentiment-Aware Chat) ─────────────────────────────────
+  // ── Feature 5 Handlers (Sentiment-Aware Chat) ──────────────────────────────
   const sendSentimentMessage = async (textInput: string) => {
     const prompt = textInput.trim();
     if (!prompt || isTask5Generating) return;
@@ -818,7 +818,7 @@ export default function App() {
     }
   };
 
-  // ── Task 6 Handlers (Multilingual Chat) ────────────────────────────────────
+  // ── Feature 6 Handlers (Multilingual Chat) ─────────────────────────────────
   const sendMultilingualMessage = async (textInput: string) => {
     const prompt = textInput.trim();
     if (!prompt || isTask6Generating) return;
@@ -886,7 +886,7 @@ export default function App() {
     }
   };
 
-  // Compute Task 5 Sentiment Analytics
+  // Compute Feature 5 Sentiment Analytics
   const userSentimentMessages = task5Messages.filter((m) => m.role === 'user' && m.sentiment);
   const avgPolarity =
     userSentimentMessages.length > 0
@@ -898,12 +898,12 @@ export default function App() {
     userSentimentMessages.slice(-2).every((m) => m.sentiment?.label === 'negative');
 
   const taskNavItems: Array<{ id: TaskId; label: string; badge: string }> = [
-    { id: 'task1', label: 'Task 1 — Dynamic Knowledge Base', badge: 'Web + File' },
-    { id: 'task2', label: 'Task 2 — Multi-Modal Vision', badge: 'Vision' },
-    { id: 'task3', label: 'Task 3 — Medical Q&A', badge: 'MedQuAD' },
-    { id: 'task4', label: 'Task 4 — Domain Expert', badge: 'arXiv CS' },
-    { id: 'task5', label: 'Task 5 — Sentiment Analysis', badge: 'Emotion' },
-    { id: 'task6', label: 'Task 6 — Multilingual', badge: '6+ Langs' },
+    { id: 'task1', label: 'Feature 1 — Dynamic Knowledge Base', badge: 'Web + File' },
+    { id: 'task2', label: 'Feature 2 — Multi-Modal Vision', badge: 'Vision' },
+    { id: 'task3', label: 'Feature 3 — Medical Q&A', badge: 'MedQuAD' },
+    { id: 'task4', label: 'Feature 4 — Domain Expert', badge: 'arXiv CS' },
+    { id: 'task5', label: 'Feature 5 — Sentiment Analysis', badge: 'Emotion' },
+    { id: 'task6', label: 'Feature 6 — Multilingual', badge: '6+ Langs' },
   ];
 
   return (
@@ -911,12 +911,12 @@ export default function App() {
       <aside className="sidebar">
         <h2>Knowledge Assistant</h2>
         <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', fontWeight: 500 }}>
-          Elevanceskills Internship Project
+          Multi-Feature AI & Vision Suite
         </div>
         <hr className="divider" />
 
         <div>
-          <h3>Select Module (Tasks 1–6)</h3>
+          <h3>Select Feature</h3>
           <div className="task-radio-group">
             {taskNavItems.map((item) => (
               <div
@@ -1401,7 +1401,7 @@ export default function App() {
                   },
                   {
                     label: 'Distressed / Overwhelmed',
-                    text: 'I am feeling really overwhelmed with my internship deadline and worried I will not finish in time.',
+                    text: 'I am feeling really overwhelmed with my project release deadline and worried I will not finish in time.',
                   },
                   {
                     label: 'Positive / Satisfied',
@@ -1533,7 +1533,7 @@ export default function App() {
         {activeTask === 'task1' && (
           <>
             <h3 style={{ margin: '0 0 0.25rem 0', fontSize: '1.15rem' }}>
-              Task 1 — Dynamic Knowledge Base (Internet + Local Files)
+              Feature 1 — Dynamic Knowledge Base (Internet + Local Files)
             </h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', marginTop: 0 }}>
               Ingests live Internet Web Pages, RSS feeds, Local Workspace Files, and Uploaded User Files into the local vector store with SHA-256 deduplication and RAG synthesis.
@@ -1547,7 +1547,7 @@ export default function App() {
                     {[
                       'Who created Python and what are its main programming paradigms?',
                       'What topics are covered on Hacker News?',
-                      'What are the 6 tasks in the Elevanceskills Internship project?',
+                      'What are the 6 core features of the Knowledge Assistant platform?',
                       'Compare Python 2.0 and Python 3.0 release milestones.',
                     ].map((q, idx) => (
                       <button
@@ -1622,7 +1622,7 @@ export default function App() {
         {activeTask === 'task2' && (
           <>
             <h3 style={{ margin: '0 0 0.25rem 0', fontSize: '1.15rem' }}>
-              Task 2 — Multi-Modal AI Assistant (Text + Image Analysis)
+              Feature 2 — Multi-Modal AI Assistant (Text + Image Analysis)
             </h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', marginTop: 0 }}>
               Upload any image in the sidebar — the local <strong>Sharp Pixel, HSL Color & Sobel Edge Vision Engine</strong> inspects the image buffer locally and answers contextual questions across turns.
@@ -1662,7 +1662,7 @@ export default function App() {
             <div>
               {task2Messages.length === 0 && !currentImagePreview && (
                 <div className="source-card" style={{ padding: '1rem' }}>
-                  <strong>How to test Multi-Modal Vision (Task 2):</strong>
+                  <strong>How to test Multi-Modal Vision (Feature 2):</strong>
                   <ol style={{ margin: '0.45rem 0 0', paddingLeft: '1.2rem', fontSize: '0.86rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
                     <li>Upload any <strong>JPG, PNG, or WEBP</strong> image using the sidebar uploader.</li>
                     <li>Ask <em>"What is in this image?"</em>, <em>"What colors are present?"</em>, or <em>"Is there text or diagram structure?"</em></li>
@@ -1793,7 +1793,7 @@ export default function App() {
         {activeTask === 'task3' && (
           <>
             <h3 style={{ margin: '0 0 0.25rem 0', fontSize: '1.15rem' }}>
-              Task 3 — Medical Q&A Chatbot (MedQuAD Dataset)
+              Feature 3 — Medical Q&A Chatbot (MedQuAD Dataset)
             </h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', marginTop: 0 }}>
               Local semantic retrieval over curated NIH MedQuAD Q&A pairs with automatic Medical Named Entity Recognition (Diseases, Symptoms, Treatments, Medications).
@@ -1933,7 +1933,7 @@ export default function App() {
         {activeTask === 'task4' && (
           <>
             <h3 style={{ margin: '0 0 0.25rem 0', fontSize: '1.15rem' }}>
-              Task 4 — Domain Expert Chatbot (arXiv Computer Science)
+              Feature 4 — Domain Expert Chatbot (arXiv Computer Science)
             </h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', marginTop: 0 }}>
               Scientific paper search, executive summarization, simplified concept explanations, and research trend visualizations on the arXiv Computer Science corpus.
@@ -2213,7 +2213,7 @@ export default function App() {
         {activeTask === 'task5' && (
           <>
             <h3 style={{ margin: '0 0 0.25rem 0', fontSize: '1.15rem' }}>
-              Task 5 — Sentiment-Aware & Emotionally Adaptive Chatbot
+              Feature 5 — Sentiment-Aware & Emotionally Adaptive Chatbot
             </h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', marginTop: 0 }}>
               Local VADER-style valence and fine-grained emotion classifier that detects user emotions in real time, adapts its response strategy, and tracks polarity shifts.
@@ -2367,7 +2367,7 @@ export default function App() {
         {activeTask === 'task6' && (
           <>
             <h3 style={{ margin: '0 0 0.25rem 0', fontSize: '1.15rem' }}>
-              Task 6 — Multilingual Conversational Support
+              Feature 6 — Multilingual Conversational Support
             </h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', marginTop: 0 }}>
               Local script and n-gram language identification, mid-conversation language switching, mixed-language (code-switching) handling, and cross-lingual context retention across English, Hindi, Spanish, French, German, and Bengali.

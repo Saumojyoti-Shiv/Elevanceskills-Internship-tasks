@@ -82,7 +82,7 @@
     },
     {
       "id": "SENT-002",
-      "utterance": "I am feeling really overwhelmed with my internship deadline and worried I will not finish in time.",
+      "utterance": "I am feeling really overwhelmed with my project release deadline and worried I will not finish in time.",
       "expected_sentiment": "negative",
       "expected_emotion": "anxiety",
       "adaptive_strategy": "Compassionate & Reassuring"
